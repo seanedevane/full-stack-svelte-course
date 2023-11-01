@@ -10,8 +10,8 @@ export const LUNCH_WEEK_NOT_FOUND_ERR = 'Lunch week not found';
 // ** Functions ** //
 
 // Get all lunch weeks (base route)
-function get(): Promise<ILunchWeek[]> {
-    return LunchWeekRepo.get();
+function getAll(): Promise<ILunchWeek[]> {
+    return LunchWeekRepo.getAll();
 }
 
 // Get one lunch week
@@ -31,16 +31,16 @@ function update(lunchWeek: ILunchWeek): Promise<void> {
 
 // Delete one lunch week
 
-function delete_(id: number): Promise<void> {
+function _delete(id: number): Promise<void> {
     return LunchWeekRepo.delete(id);
 }
 
 // ** Export default **//
 
 export default {
-    get,
+    getAll,
     getOne,
     add,
     update,
-    delete: delete_
+    delete: _delete
 } as const;

@@ -55,7 +55,7 @@ const lunchWeekRouter = Router();
 // Get all lunch weeks
 lunchWeekRouter.get(
   Paths.LunchWeek.Base,
-  LunchWeekRoutes.get
+  LunchWeekRoutes.getAll
 );
 
 // Get requested week (default current)

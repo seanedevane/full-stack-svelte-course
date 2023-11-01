@@ -37,7 +37,7 @@ async function persists(id: number): Promise<boolean> {
 async function getAll(): Promise<IUser[]> {
   const db = await orm.openDb();
   return db.users;
-
+}
 /**
  * Add one user.
  */

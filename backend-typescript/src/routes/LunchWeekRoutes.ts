@@ -7,9 +7,9 @@ import { ILunchWeek } from "@src/models/LunchWeek";
 
 // Get all users
 
-async function get(_: IReq, res: IRes) {
-    const lunchWeeks = await LunchWeekService.get();
-    return res.status(HttpStatusCodes.OK).json({ lunchWeeks });
+async function getAll(_: IReq, res: IRes) {
+    const lunchWeeks = await LunchWeekService.getAll();
+    return res.status(HttpStatusCodes.OK).json({ "key": "hi" });
 }
 
 // Get specific lunch week
@@ -41,8 +41,9 @@ async function delete_(req: IReq, res: IRes) {
 }
 
 export default {
-    get,
+    getAll,
     getOne,
+    add,
     update,
     delete: delete_
 }

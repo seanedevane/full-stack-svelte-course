@@ -5,7 +5,7 @@ import orm from './MockOrm';
 
 // Get all lunch weeks (base route)
 
-async function get(): Promise<ILunchWeek[]> {
+async function getAll(): Promise<ILunchWeek[]> {
     const db = await orm.openDb();
     // return full array of lunchWeek objects
     return db.lunchWeeks;
@@ -19,6 +19,7 @@ async function getOne(id: number): Promise<ILunchWeek | null> {
             return week;
         }
     }
+    return null;
 }
 
 // Add a lunch week
@@ -53,7 +54,7 @@ async function delete_(id: number): Promise<void> {
 }
 
 export default {
-    get,
+    getAll,
     getOne,
     add,
     update,

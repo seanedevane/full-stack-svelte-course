@@ -14,6 +14,7 @@ export default {
   },
   LunchWeek: {
     Base: '/lunch-week',
+    GetAll: '/all',
     GetOne: '/:id',
     Add: '/add',
     Update: '/update/:id',
