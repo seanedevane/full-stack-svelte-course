@@ -4,6 +4,7 @@ import jetValidator from 'jet-validator';
 import Paths from '../constants/Paths';
 import User from '@src/models/User';
 import UserRoutes from './UserRoutes';
+import LunchWeekRoutes from './LunchWeekRoutes'
 
 
 // **** Variables **** //
@@ -46,6 +47,39 @@ userRouter.delete(
 // Add UserRouter
 apiRouter.use(Paths.Users.Base, userRouter);
 
+
+// Add LunchWeek Router
+
+const lunchWeekRouter = Router();
+
+// Get all lunch weeks
+lunchWeekRouter.get(
+  Paths.LunchWeek.Base,
+  LunchWeekRoutes.get
+);
+
+// Get requested week (default current)
+// TODO: this is untested
+lunchWeekRouter.get(
+  Paths.LunchWeek.GetOne,
+  LunchWeekRoutes.getOne
+);
+
+// Update lunch week
+lunchWeekRouter.put(
+  Paths.LunchWeek.Update,
+  LunchWeekRoutes.update
+);
+
+// Delete lunch week
+lunchWeekRouter.delete(
+  Paths.LunchWeek.Delete,
+  LunchWeekRoutes.delete
+)
+
+// Tie router in to apiRouter
+
+apiRouter.use(Paths.LunchWeek.Base, lunchWeekRouter)
 
 // **** Export default **** //
 

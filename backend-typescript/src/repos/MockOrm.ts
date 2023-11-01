@@ -3,6 +3,7 @@
 import jsonfile from 'jsonfile';
 
 import { IUser } from '@src/models/User';
+import { ILunchWeek } from '@src/models/LunchWeek';
 
 
 // **** Variables **** //
@@ -14,6 +15,7 @@ const DB_FILE_NAME = 'database.json';
 
 interface IDb {
   users: IUser[];
+  lunchWeeks: ILunchWeek[];
 }
 
 

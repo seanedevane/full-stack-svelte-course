@@ -16,6 +16,7 @@ export const USER_NOT_FOUND_ERR = 'User not found';
  */
 function getAll(): Promise<IUser[]> {
   return UserRepo.getAll();
+
 }
 
 /**
