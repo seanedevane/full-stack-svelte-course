@@ -5,6 +5,7 @@ import Paths from '../constants/Paths';
 import User from '@src/models/User';
 import UserRoutes from './UserRoutes';
 import LunchWeekRoutes from './LunchWeekRoutes'
+import LunchDayRoutes from './LunchDayRoutes'
 
 
 // **** Variables **** //
@@ -54,15 +55,20 @@ const lunchWeekRouter = Router();
 
 // Get all lunch weeks
 lunchWeekRouter.get(
-  Paths.LunchWeek.Base,
+  Paths.LunchWeek.GetAll,
   LunchWeekRoutes.getAll
 );
 
 // Get requested week (default current)
-// TODO: this is untested
 lunchWeekRouter.get(
   Paths.LunchWeek.GetOne,
   LunchWeekRoutes.getOne
+);
+
+// add lunch week
+lunchWeekRouter.post(
+  Paths.LunchWeek.Add,
+  LunchWeekRoutes.add
 );
 
 // Update lunch week
@@ -75,11 +81,35 @@ lunchWeekRouter.put(
 lunchWeekRouter.delete(
   Paths.LunchWeek.Delete,
   LunchWeekRoutes.delete
-)
-
-// Tie router in to apiRouter
+);
 
 apiRouter.use(Paths.LunchWeek.Base, lunchWeekRouter)
+// Lunch day router
+
+const lunchDayRouter = Router({ mergeParams: true});
+
+// Get lunchDays List
+
+lunchDayRouter.get(
+  Paths.LunchDay.List,
+  LunchDayRoutes.getLunchDayList
+)
+
+// Add lunch day
+lunchDayRouter.post(
+  Paths.LunchDay.Add,
+  LunchDayRoutes.add
+)
+
+// update
+
+lunchDayRouter.put(
+  Paths.LunchDay.Update,
+  LunchDayRoutes.update
+);
+
+// Tie router in to apiRouter
+apiRouter.use(Paths.LunchDay.Base, lunchDayRouter)
 
 // **** Export default **** //
 

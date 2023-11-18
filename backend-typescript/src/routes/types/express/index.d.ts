@@ -9,3 +9,5 @@ declare module 'express' {
     signedCookies: Record<string, string>;
   }
 }
+
+declare module 'knex-stringcase';

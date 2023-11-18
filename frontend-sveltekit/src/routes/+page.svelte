@@ -23,25 +23,29 @@
 			<div class="content">
 				<h3>Register Now</h3>
 				<div class="field">
-					<label class="label">Email Address</label>
 					<div class="control">
-						<input
-							type="text"
-							placeholder="Enter your email address"
-							class="input"
-							bind:value={emailAddress}
-						/>
+						<label class="label"
+							>Email Address
+							<input
+								type="text"
+								placeholder="Enter your email address"
+								class="input"
+								bind:value={emailAddress}
+							/>
+						</label>
 					</div>
 				</div>
 				<div class="field">
-					<label class="label">School Name</label>
 					<div class="control">
-						<input
-							type="text"
-							placeholder="Enter your school's name"
-							class="input"
-							bind:value={schoolName}
-						/>
+						<label class="label"
+							>School Name
+							<input
+								type="text"
+								placeholder="Enter your school's name"
+								class="input"
+								bind:value={schoolName}
+							/>
+						</label>
 					</div>
 				</div>
 				<div class="field is-grouped">

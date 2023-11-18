@@ -17,7 +17,13 @@ export default {
     GetAll: '/all',
     GetOne: '/:id',
     Add: '/add',
-    Update: '/update/:id',
-    Delete: '/delete/:id'
+    Update: '/update',
+    Delete: '/delete/:id',
+  },
+  LunchDay: {
+    Base: '/lunch-week/:lunchWeekId/lunch-day',
+    List: '/list',
+    Add: '/add',
+    Update: '/update'
   }
 } as const;

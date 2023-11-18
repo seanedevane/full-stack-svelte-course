@@ -2,6 +2,7 @@ import LunchWeekRepo from "@src/repos/LunchWeekRepo";
 import { ILunchWeek } from "@src/models/LunchWeek";
 import { RouteError } from "@src/other/classes";
 import HttpStatusCodes from "@src/constants/HttpStatusCodes";
+import { ILunchDay } from "@src/models/LunchDay";
 
 // ** Variables ** //
 

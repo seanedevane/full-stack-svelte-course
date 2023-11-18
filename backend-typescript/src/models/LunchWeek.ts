@@ -1,4 +1,8 @@
+import { ILunchDay } from "./LunchDay";
+
+
 // ** Variables **// 
+
 
 const INVALID_CONSTRUCTOR_PARAM = 'nameOrObj arg must be a string or an ' + 'object with the appropriate user keys.';
 
@@ -8,6 +12,7 @@ export interface ILunchWeek {
     lunchWeekId: number;
     weekOf: string;
     isPublished: boolean;
+    lunchDays: Array<ILunchDay>;
 }
 
 // ** Functions **// 

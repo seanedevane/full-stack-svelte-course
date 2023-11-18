@@ -8,6 +8,7 @@ import path from 'path';
 import helmet from 'helmet';
 import express, { Request, Response, NextFunction } from 'express';
 import logger from 'jet-logger';
+import cors from 'cors'
 
 import 'express-async-errors';
 
@@ -42,6 +43,9 @@ if (EnvVars.NodeEnv === NodeEnvs.Dev.valueOf()) {
 if (EnvVars.NodeEnv === NodeEnvs.Production.valueOf()) {
   app.use(helmet());
 }
+app.use(cors())
+app.options('*', cors()) // this allows preflight for POST, PUT, and DELETE
+// TODO: confirm these are actually *secure* implementations of CORS, as they likely aren't.
 
 // Add APIs, must be after middleware
 app.use(Paths.Base, BaseRouter);
