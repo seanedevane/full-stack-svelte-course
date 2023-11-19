@@ -36,7 +36,8 @@
 			});
 			const responseData = await response.json();
 			lunchWeek.lunchWeekId = responseData[0].lunchWeekId;
-			data.params.lunchWeek.push(lunchWeek);
+			console.log(lunchWeek);
+			data.params.lunchWeeks.push(lunchWeek);
 			loading = false;
 		} catch (e) {
 			loading = false;
@@ -88,7 +89,7 @@
 	</table>
 	{#if data.params}
 		{#each data.params.lunchWeeks as week}
-			<tr class="lunch-week-container">
+			<tr class="lunch-week-container" data-sveltekit-preload-data="off">
 				<td>{week.weekOf}</td>
 				<td>{week.isPublished}</td>
 				<td class="clickable"
@@ -141,7 +142,6 @@
 							class="input"
 							placeholder="yyyy-mm-dd"
 						/>
-						<button class="button is-success">Continue</button>
 					</div>
 				</div>
 			</form>

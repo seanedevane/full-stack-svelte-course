@@ -18,9 +18,13 @@
 			const formattedDay = format(calculatedDay, 'yyyy-MM-dd');
 
 			// check if the DB returned any values in the lunchDay list, don't overwrite if they exist
-			if (data.params.lunchWeek.lunchDays.some((x) => x.day === formattedDay)) {
-				continue;
-			} else {
+			// check if the current lunchDay has an id assigned (or if we have the array at all)
+			// this will return undefined is it doesn't exist, so try/catch to deal with the inevitable error
+			try {
+				if (data.params.lunchWeek.lunchDays[i].lunchDayId) {
+					continue;
+				}
+			} catch {
 				// if it doesn't exist, scaffold data for the day
 				const lunchDay = {
 					day: formattedDay,
@@ -46,6 +50,7 @@
 			console.log(lunchDay);
 			// check if the item has an assigned ID already, if so, PUT to the API
 			if (lunchDay.lunchDayId) {
+				console.log('Sending PUT request');
 				const response = await fetch(
 					`${PUBLIC_API_ROOT}/lunch-week/${data.params.lunchWeek.lunchWeekId}/lunch-day/update`,
 					{
@@ -56,10 +61,11 @@
 						}
 					}
 				);
-				const json = await response.json();
-				console.log(json);
+				// const json = await response.json();
+				// console.log(json);
 			} else {
 				// POST to get a new ID assigned in all other cases
+				console.log('Sending POST request');
 				const response = await fetch(
 					`${PUBLIC_API_ROOT}/lunch-week/${data.params.lunchWeek.lunchWeekId}/lunch-day/add`,
 					{
@@ -70,9 +76,8 @@
 						}
 					}
 				);
-				const json = await response.json();
-				console.log(json);
-				lunchDay.lunchDayId = json.lunchDayId; // confirm this will be received correctly
+				const responseData = await response.json();
+				data.params.lunchWeek.lunchDays[i].lunchDayId = responseData[0].lunchDayId; // confirm this will be received correctly
 			}
 		}
 	};

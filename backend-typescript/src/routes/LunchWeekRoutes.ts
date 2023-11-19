@@ -34,7 +34,7 @@ async function add(req: IReq<{lunchWeek: ILunchWeek}>, res: IRes) {
     console.log(lunchWeek)
     const response = await LunchWeekService.add(lunchWeek);
     console.log(response)
-    return res.status(HttpStatusCodes.CREATED).json( response );
+    return res.status(HttpStatusCodes.CREATED).json(response);
 }
 
 // Update one lunch week

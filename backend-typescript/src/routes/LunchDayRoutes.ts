@@ -16,8 +16,9 @@ async function getLunchDayList(req: IReq, res: IRes) {
 // Add
 async function add(req: IReq<{lunchDay: ILunchDay}>, res: IRes) {
     const { lunchDay } = req.body;
-    const lunchDayId = await LunchDayService.add(lunchDay);
-    return res.status(HttpStatusCodes.OK).json(lunchDayId);
+    const response = await LunchDayService.add(lunchDay);
+    console.log(response)
+    return res.status(HttpStatusCodes.OK).json(response);
 }
 // Update
 
