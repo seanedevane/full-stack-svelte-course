@@ -1,3 +1,6 @@
+# App specific
+auth0-config*
+
 # Logs
 logs
 *.log
